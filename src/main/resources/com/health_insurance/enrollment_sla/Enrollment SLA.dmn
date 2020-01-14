@@ -1,11 +1,130 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_D493037B-3D80-4092-B3C2-55A96E9BF592" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_AD182C89-BBF3-4F64-B73F-16ABF6A03FC6" name="Enrollment SLA" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_D493037B-3D80-4092-B3C2-55A96E9BF592">
   <dmn:extensionElements/>
+  <dmn:inputData id="_620D41B7-3DA8-4E0A-8199-A98AD1AAC0B2" name="Task Name">
+    <dmn:extensionElements/>
+    <dmn:variable id="_87BFEFB4-1CA1-4827-AA27-353707A23153" name="Task Name" typeRef="string"/>
+  </dmn:inputData>
+  <dmn:decision id="_4488DCBE-6337-4BAB-B195-6FDB1694D7AA" name="SLA">
+    <dmn:extensionElements/>
+    <dmn:variable id="_595166F7-F84C-4126-A4C7-E62FEFA96B88" name="SLA" typeRef="string"/>
+    <dmn:informationRequirement id="_8F0A1FEA-9DA9-4A95-996A-487C15562A4F">
+      <dmn:requiredInput href="#_75F0DA53-9B51-419E-912E-64399D237903"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_AD71A5F1-91E5-4507-AC19-B4C6DD96709C">
+      <dmn:requiredInput href="#_620D41B7-3DA8-4E0A-8199-A98AD1AAC0B2"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_EDA007FD-FBE7-44D7-8B01-687B86742812" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_06481555-C3BD-42EB-BBA3-9B533AC695F2">
+        <dmn:inputExpression id="_2F975BA0-BEE1-482E-8D87-5032A14F57B1" typeRef="string">
+          <dmn:text>Process Name</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_6CAF146D-2AE2-40A4-8CF4-85E67FB0FC12">
+        <dmn:inputExpression id="_34F4C090-C2B7-496F-98A6-3D0A6420ACE2" typeRef="string">
+          <dmn:text>Task Name</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_04F0693A-DEAF-4EB2-A22E-FB0329AAF377" typeRef="string"/>
+      <dmn:rule id="_ABA945A5-FA99-4260-982E-34121CBBFBB1">
+        <dmn:inputEntry id="_DD1A14FC-8DE1-4DD3-87F7-D37841208575">
+          <dmn:text>"Enrollment"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_870AAEB4-4BDD-4DA2-A354-6C44B2E012A8">
+          <dmn:text>"Review"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_DF618C04-E1E7-4D5C-8B4B-F716FC65C8A3">
+          <dmn:text>"1W"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_DC87B980-7BB6-4550-8133-FF90E4E9672C">
+        <dmn:inputEntry id="_1AD5C72D-B149-4048-BC07-83AD1123EAD3">
+          <dmn:text>"Enrollment"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F06608D9-D3D8-4825-AC5B-FD2B887F37BC">
+          <dmn:text>"Approval"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_8F61CC0C-95A6-400B-8C85-0E6C1A83185C">
+          <dmn:text>"3D"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_81A53539-26BE-48F7-B3FB-EB169C65B6DC">
+        <dmn:inputEntry id="_0F50A4E6-E045-4742-ADAF-61E6B7BFAC10">
+          <dmn:text>"Claims"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E5D81252-A0AF-41F6-B684-C1675121DE5E">
+          <dmn:text>"Edit"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_ED60E82A-7DD4-4892-9E6F-810B54B979DE">
+          <dmn:text>"1W"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_663B515F-40EC-41B5-A78E-E77657BA97D0">
+        <dmn:inputEntry id="_CAA8C4EB-B152-4285-B933-6A3210DBA05F">
+          <dmn:text>"Premium Billing"
+</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_830FF6E4-903B-45BF-A378-4DC6456D7E6B">
+          <dmn:text>"Fix Rate"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_41163B87-5D72-47C0-8213-614D940583E4">
+          <dmn:text>"4D"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:inputData id="_75F0DA53-9B51-419E-912E-64399D237903" name="Process Name">
+    <dmn:extensionElements/>
+    <dmn:variable id="_F5285DD6-F551-4F39-8C4C-5E4B6DA38847" name="Process Name" typeRef="string"/>
+  </dmn:inputData>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram>
       <di:extension>
-        <kie:ComponentsWidthsExtension/>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_EDA007FD-FBE7-44D7-8B01-687B86742812">
+            <kie:width>50.0</kie:width>
+            <kie:width>150.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
       </di:extension>
+      <dmndi:DMNShape id="dmnshape-_75F0DA53-9B51-419E-912E-64399D237903" dmnElementRef="_75F0DA53-9B51-419E-912E-64399D237903" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="156" y="315" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_4488DCBE-6337-4BAB-B195-6FDB1694D7AA" dmnElementRef="_4488DCBE-6337-4BAB-B195-6FDB1694D7AA" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="232" y="157" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_620D41B7-3DA8-4E0A-8199-A98AD1AAC0B2" dmnElementRef="_620D41B7-3DA8-4E0A-8199-A98AD1AAC0B2" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="294" y="315" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_8F0A1FEA-9DA9-4A95-996A-487C15562A4F" dmnElementRef="_8F0A1FEA-9DA9-4A95-996A-487C15562A4F">
+        <di:waypoint x="256" y="340"/>
+        <di:waypoint x="232" y="182"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_AD71A5F1-91E5-4507-AC19-B4C6DD96709C" dmnElementRef="_AD71A5F1-91E5-4507-AC19-B4C6DD96709C">
+        <di:waypoint x="344" y="315"/>
+        <di:waypoint x="282" y="207"/>
+      </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
 </dmn:definitions>
